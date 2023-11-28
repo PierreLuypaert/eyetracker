@@ -25,18 +25,23 @@ Flux vidéo de la Webcam
 
 # Conception retenue
 1. Récupération de la vidéo
-    Extraction du flux vidéo de la webcam utilisateur
+
+	Extraction du flux vidéo de la webcam utilisateur
 2. Traitement de l'image
-    2.1 Détection du visage
-    2.2 Détection des yeux
-    2.3 Extraction des caractéristiques des yeux
+
+	2.1 Détection du visage
+	2.2 Détection des yeux
+	2.3 Extraction des caractéristiques des yeux
+
 3. Prédiction de la position du regard
-    3.1 Par apprentissage d'un modèle
-    3.2 Par trigonométrie
+	3.1 Par apprentissage d'un modèle
+	3.2 Par trigonométrie
 4. Interface graphique
-    4.1 Module de calibrage
-    4.2 Fenêtre d'affichage du cercle, représentation la position du regard calculée en temps réel
+
+	4.1 Module de calibrage
+	4.2 Fenêtre d'affichage du cercle, représentation la position du regard calculée en temps réel
 5. Validation
-    5.1 Comparaison des résultats avec un oculomètre de référence.
-    5.2 Interaction avec un cercle mobile pour évaluer la précision du système.
+
+	5.1 Comparaison des résultats avec un oculomètre de référence.  
+	5.2 Interaction avec un cercle mobile pour évaluer la précision du système.
 
