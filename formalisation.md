@@ -1,4 +1,4 @@
-# Formalisation du projet occulomètre
+# Formalisation du projet oculomètre
 ## Objectif:
 Implémentation d'un occulomètre
 Minimiser l'écart entre les coordonnées estimées et les coordonnées réelles
