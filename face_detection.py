@@ -11,7 +11,7 @@ cap = cv2.VideoCapture(0)
 # Compteur pour l'incrément du nom du fichier
 counter=0
 taille_point_rouge = 30
-
+folder_name = "face_detection"
 # Taille de l'écran
 screen_width, screen_height = 1920, 1080  # Mettez les dimensions de votre écran
 
@@ -51,16 +51,16 @@ while True:
             counter += 1
 
             # Sauvegarder les pixels dans un fichier texte
-            filename_faces = f"detection/pixels_faces_{counter}.txt"
+            filename_faces = f"{folder_name}/pixels_faces_{counter}.txt"
             np.savetxt(filename_faces, roi_resized, fmt='%d', delimiter=', ')
             print(f"Pixels du visage sauvegardés sous {filename_faces}")
 
-            filename = f"detection/face_{counter}.png"
+            filename = f"{folder_name}/face_{counter}.png"
             cv2.imwrite(filename, roi_resized)
             print(f"Image enregistrée sous {filename}")        
             
             # Sauvegarder les coordonnées du point rouge dans un fichier texte
-            filename_points = f"detection/points_increment_{counter}.txt"
+            filename_points = f"{folder_name}/points_increment_{counter}.txt"
             with open(filename_points, 'w') as f:
                 f.write(f"{red_point_x}, {red_point_y}")
             print(f"Coordonnées du point rouge sauvegardées sous {filename_points}")
