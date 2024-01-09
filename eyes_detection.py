@@ -47,20 +47,15 @@ while True:
         (x2, y2, w2, h2) = eyes_sorted[1]
         # Créer une région d'intérêt (ROI)
         roi1 = gray[y1:y1 + h1, x1:x1 + w1]  # Utiliser l'échelle de gris
-        roi2 = gray[y2:y2 + h2, x2:x2 + w2]  # Utiliser l'échelle de gris
 
-        roi1_resized = cv2.resize(roi1, (100, 100))
-        roi2_resized = cv2.resize(roi2, (100, 100))
 
+        roi1_resized = cv2.resize(roi1, (36, 36))
+
+        cv2.imshow("Oeil", roi1_resized)
         # Seuillage de l'image résultante (ROI)
-        _, thresh1 = cv2.threshold(roi1_resized, 60, 255, cv2.THRESH_BINARY)
-        _, thresh2 = cv2.threshold(roi2_resized, 60, 255, cv2.THRESH_BINARY)
+        _, thresh1 = cv2.threshold(roi1_resized, 100, 255, cv2.THRESH_BINARY)
+        cv2.imshow("Thresh 1", thresh1)
 
-        # Concaténer les deux images binaires
-        combined_thresh = np.concatenate((thresh1, thresh2), axis=1)
-
-        # Afficher l'image résultante (ROI)
-        cv2.imshow('Combined Eyes Detection', combined_thresh)
 
         # Vérifier si la touche 'P' est pressée pour enregistrer les pixels
         key = cv2.waitKey(1)
@@ -70,11 +65,11 @@ while True:
 
             # Sauvegarder les pixels dans un fichier texte
             filename_eyes = f"{folder_name}/pixels_eyes_{counter}.txt"
-            np.savetxt(filename_eyes, combined_thresh, fmt='%d', delimiter=', ')
+            np.savetxt(filename_eyes, thresh1, fmt='%d', delimiter=', ')
             print(f"Pixels des yeux sauvegardés sous {filename_eyes}")
 
             filename = f"{folder_name}/eyes_{counter}.png"
-            cv2.imwrite(filename, combined_thresh)
+            cv2.imwrite(filename, thresh1)
             print(f"Image enregistrée sous {filename}")       
 
             # Sauvegarder les coordonnées du point rouge dans un fichier texte
